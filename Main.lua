@@ -8,7 +8,7 @@
 
 local L = StatStain2Locale
 local AppName = L['StatStain2: StatStain Rebuilt']
-local Version = '0.11.1'
+local Version = '0.11.2'
 local AppFullName = AppName .. ' ' .. Version
 
 local tooltips = {
@@ -69,8 +69,14 @@ local transforms = {
 	[statstr:gsub('STAT', ITEM_MOD_CR_MULTISTRIKE_SHORT)]		= statsColors.multistrike,
 	[L[statstr]:gsub('STAT', ITEM_MOD_VERSATILITY)]				= statsColors.versatility,
 	[statstr:gsub('STAT', ITEM_MOD_VERSATILITY)]				= statsColors.versatility,
+
+	[L[statstr]:gsub('STAT', ITEM_MOD_PARRY_RATING_SHORT)]		= statsColors.parry,
+	[statstr:gsub('STAT', ITEM_MOD_PARRY_RATING_SHORT)]			= statsColors.parry,
+	[L[statstr]:gsub('STAT', ITEM_MOD_DODGE_RATING_SHORT)]		= statsColors.dodge,
+	[statstr:gsub('STAT', ITEM_MOD_DODGE_RATING_SHORT)]			= statsColors.dodge,
 	[L[statstr]:gsub('STAT', ITEM_MOD_EXTRA_ARMOR_SHORT)]		= statsColors.bonusArmor,
 	[statstr:gsub('STAT', ITEM_MOD_EXTRA_ARMOR_SHORT)]			= statsColors.bonusArmor,
+
 	[ITEM_MOD_SPIRIT]											= statsColors.spirit,
 
 	[L[statstr]:gsub('STAT', ITEM_MOD_RESILIENCE_RATING_SHORT)]		= statsColors.resilience,
@@ -84,6 +90,11 @@ local transforms = {
 	[statstr:gsub('STAT', ITEM_MOD_CR_LIFESTEAL_SHORT)]		= statsColors.leech,
 	[L[statstr]:gsub('STAT', ITEM_MOD_CR_SPEED_SHORT)]		= statsColors.speed,
 	[statstr:gsub('STAT', ITEM_MOD_CR_SPEED_SHORT)]			= statsColors.speed,
+
+	[L[statstr]:gsub('STAT', ITEM_MOD_ATTACK_POWER_SHORT)]	= statsColors.attackPower,
+	[statstr:gsub('STAT', ITEM_MOD_ATTACK_POWER_SHORT)]		= statsColors.attackPower,
+	[L[statstr]:gsub('STAT', ITEM_MOD_SPELL_POWER_SHORT)]	= statsColors.spellPower,
+	[statstr:gsub('STAT', ITEM_MOD_SPELL_POWER_SHORT)]		= statsColors.spellPower,
 
 	[DAMAGE_TEMPLATE]	= statsColors.weaponDamage,
 	[SPEED .. ' %.2f']	= statsColors.weaponSpeed,
@@ -101,11 +112,11 @@ local transforms = {
 	[DAMAGE_TEMPLATE_WITH_SCHOOL:format('%d', '%d', STRING_SCHOOL_NATURE)]	= statsColors.natureDamage,
 	[DAMAGE_TEMPLATE_WITH_SCHOOL:format('%d', '%d', STRING_SCHOOL_SHADOW)]	= statsColors.shadowDamage,
 
-	[ITEM_RESIST_SINGLE:gsub('%%s', STRING_SCHOOL_ARCANE)]	= statsColors.arcaneResist,
-	[ITEM_RESIST_SINGLE:gsub('%%s', STRING_SCHOOL_FIRE)]	= statsColors.fireResist,
-	[ITEM_RESIST_SINGLE:gsub('%%s', STRING_SCHOOL_FROST)]	= statsColors.frostResist,
-	[ITEM_RESIST_SINGLE:gsub('%%s', STRING_SCHOOL_NATURE)]	= statsColors.natureResist,
-	[ITEM_RESIST_SINGLE:gsub('%%s', STRING_SCHOOL_SHADOW)]	= statsColors.shadowResist,
+	[ITEM_RESIST_SINGLE:gsub('%%%d?%$?s', STRING_SCHOOL_ARCANE)]	= statsColors.arcaneResist,
+	[ITEM_RESIST_SINGLE:gsub('%%%d?%$?s', STRING_SCHOOL_FIRE)]		= statsColors.fireResist,
+	[ITEM_RESIST_SINGLE:gsub('%%%d?%$?s', STRING_SCHOOL_FROST)]	= statsColors.frostResist,
+	[ITEM_RESIST_SINGLE:gsub('%%%d?%$?s', STRING_SCHOOL_NATURE)]	= statsColors.natureResist,
+	[ITEM_RESIST_SINGLE:gsub('%%%d?%$?s', STRING_SCHOOL_SHADOW)]	= statsColors.shadowResist,
 }
 
 local gems = {

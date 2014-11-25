@@ -17,7 +17,11 @@
 --	statsColors.mastery		= ''
 --	statsColors.multistrike	= ''
 --	statsColors.versatility	= ''
+
+--	statsColors.parry		= ''
+--	statsColors.dodge		= ''
 --	statsColors.bonusArmor	= ''
+
 --	statsColors.spirit		= ''
 
 --	statsColors.resilience	= ''
@@ -26,6 +30,8 @@
 --	statsColors.avoidance	= ''
 --	statsColors.leech		= ''
 --	statsColors.speed		= ''
+
+--	statsColors.spellPower	= ''
 
 --	statsColors.weaponDamage	= ''
 --	statsColors.weaponSpeed		= ''

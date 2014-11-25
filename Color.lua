@@ -12,7 +12,11 @@ statsColors = {
 	mastery			= 'ffd76868',
 	multistrike		= 'ffe047ff', -- <spell penetration
 	versatility		= 'ff00ffba', -- <hit
+
+	parry			= 'fff600ff',
+	dodge			= 'ffbcff00',
 	bonusArmor		= 'ffb9b9b9', -- <armor (because it's same as armor)
+
 	spirit			= 'ff00ff55',
 
 -- PvP
@@ -20,20 +24,21 @@ statsColors = {
 	pvppower		= 'ff0070de',
 
 -- Minor
-	avoidance		= 'ffbcff00', -- <dodge
+	avoidance		= 'ff3f63ff', -- <defense
 	leech			= 'ffff99ad', -- <hp5
-	speed			= 'ffba1b6a', -- <parry
+	speed			= 'ffba1b6a', -- <ranged power
+
+-- Other
+	attackPower		= 'ffff007d',
+	spellPower		= 'fffffb00',
 
 -- Deprecated
-	--attackPower			= 'ffff007d',
+	--
 	--rangedPower			= 'ffba1b6a',
-	--spellPower			= 'fffffb00',
 	--feralPower			= 'ffff80c0',
 	--defense				= 'ff3f63ff',
 	--blockRating			= 'ffa2793c',
 	--blockValue			= 'ffa09060',
-	--parry				= 'fff600ff',
-	--dodge				= 'ffbcff00',
 	--health				= 'fff4bf8a',
 	--mana				= 'ffb840ff',
 	--hp5					= 'ffff99ad',
@@ -45,7 +50,7 @@ statsColors = {
 -- Non-attribute item stat
 -- Common
 	weaponDamage	= 'ffff8930',
-	weaponSpeed		= 'ffe6ff8b', -- RESERVED: I don't know why right section texts in tooltips are not grabbed
+	weaponSpeed		= 'ffe6ff8b',
 	armor			= 'ffb9b9b9',
 
 -- Wand
