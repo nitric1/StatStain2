@@ -3,47 +3,33 @@
   * If you want to modify stat color configuration, uncomment(remove "--") what you want to modify and fill your color codes in below like 'ffff000a' then save this file as 'Color.User.lua'.
   * 능력치별 색상 설정을 바꾸시고 싶으시면 아래에서 원하시는 능력치의 코멘트를 풀고("--" 제거) 'ffff000a'같이 색상 코드를 입력하신 후 'Color.User.lua'로 저장해 주십시오.
   *
+  * Update
+  * * 0.11.0: Clean attributes for WoD
   ]]
 
 --	statsColors.strength	= ''
---	statsColors.attackPower	= ''
---	statsColors.blockValue	= ''
---	statsColors.parry		= ''
-
 --	statsColors.agility		= ''
---	statsColors.rangedPower	= ''
---	statsColors.armor		= ''
---	statsColors.critical	= ''
---	statsColors.dodge		= ''
-
---	statsColors.stamina		= ''
---	statsColors.health		= ''
-
 --	statsColors.intellect	= ''
---	statsColors.mana		= ''
+--	statsColors.stamina		= ''
 
---	statsColors.spirit	= ''
---	statsColors.hp5		= ''
---	statsColors.mp5		= ''
+--	statsColors.critical	= ''
+--	statsColors.haste		= ''
+--	statsColors.mastery		= ''
+--	statsColors.multistrike	= ''
+--	statsColors.versatility	= ''
+--	statsColors.bonusArmor	= ''
+--	statsColors.spirit		= ''
 
---	statsColors.hit		= ''
---	statsColors.haste	= ''
+--	statsColors.resilience	= ''
+--	statsColors.pvppower	= ''
+
+--	statsColors.avoidance	= ''
+--	statsColors.leech		= ''
+--	statsColors.speed		= ''
 
 --	statsColors.weaponDamage	= ''
 --	statsColors.weaponSpeed		= ''
---	statsColors.feralPower		= ''
---	statsColors.expertise		= ''
-
---	statsColors.spellPower			= ''
---	statsColors.spellPenetration	= ''
-
---	statsColors.defense		= ''
---	statsColors.blockRating	= ''
-
---	statsColors.resilience	= ''
---	statsColors.pvppower	= '' -- added from 0.7.1
-
---	statsColors.mastery		= ''
+--	statsColors.armor			= ''
 
 --	statsColors.arcaneDamage	= ''
 --	statsColors.fireDamage		= ''
@@ -66,4 +52,4 @@
 --	statsColors.prismaticGem	= ''
 --	statsColors.metaGem			= ''
 --	statsColors.cogwheel		= ''
---  statsColors.hydraulicGem	= '' -- added from 0.7
+--  statsColors.hydraulicGem	= ''

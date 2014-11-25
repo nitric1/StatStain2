@@ -2,14 +2,14 @@
   *
   * StatStain2: StatStain Rebuilt.
   *
-  * This addon is compact version of StatStain (by Nymbia).
+  * This addon is compact and updated version of StatStain (by Nymbia).
   *
   ]]
 
 local L = StatStain2Locale
-local AppName = L["StatStain2: StatStain Rebuilt"]
-local Version = "0.9.0"
-local AppFullName = AppName .. " " .. Version
+local AppName = L['StatStain2: StatStain Rebuilt']
+local Version = '0.11.0'
+local AppFullName = AppName .. ' ' .. Version
 
 local tooltips = {
 	ItemRefTooltip,
@@ -54,98 +54,58 @@ local tooltips = {
 local statstr = '%c%d STAT'
 
 local transforms = {
-	[ITEM_MOD_STRENGTH]										= statsColors.strength,
-	-- [L[statstr]:gsub('STAT', ITEM_MOD_ATTACK_POWER_SHORT)]	= statsColors.attackPower,
-	-- [L['Equip: '] .. ITEM_MOD_ATTACK_POWER]					= statsColors.attackPower,
-	[L[statstr]:gsub('STAT', ITEM_MOD_BLOCK_VALUE_SHORT)]	= statsColors.blockValue,
-	[statstr:gsub('STAT', ITEM_MOD_BLOCK_VALUE_SHORT)]		= statsColors.blockValue,
-	-- [L['Equip: '] .. ITEM_MOD_BLOCK_VALUE]					= statsColors.blockValue,
-	[L[statstr]:gsub('STAT', ITEM_MOD_PARRY_RATING_SHORT)]	= statsColors.parry,
-	[statstr:gsub('STAT', ITEM_MOD_PARRY_RATING_SHORT)]		= statsColors.parry,
-	-- [L['Equip: '] .. ITEM_MOD_PARRY_RATING]					= statsColors.parry,
+	[ITEM_MOD_STRENGTH]		= statsColors.strength,
+	[ITEM_MOD_AGILITY]		= statsColors.agility,
+	[ITEM_MOD_STAMINA]		= statsColors.stamina,
+	[ITEM_MOD_INTELLECT]	= statsColors.intellect,
 
-	[ITEM_MOD_AGILITY]												= statsColors.agility,
-	[L[statstr]:gsub('STAT', ITEM_MOD_RANGED_ATTACK_POWER_SHORT)]	= statsColors.rangedPower,
-	[statstr:gsub('STAT', ITEM_MOD_RANGED_ATTACK_POWER_SHORT)]		= statsColors.rangedPower,
-	-- [L['Equip: '] .. ITEM_MOD_RANGED_ATTACK_POWER]					= statsColors.rangedPower,
-	[ARMOR_TEMPLATE]												= statsColors.armor,
 	[L[statstr]:gsub('STAT', ITEM_MOD_CRIT_RATING_SHORT)]			= statsColors.critical,
 	[statstr:gsub('STAT', ITEM_MOD_CRIT_RATING_SHORT)]				= statsColors.critical,
-	-- [L['Equip: '] .. ITEM_MOD_CRIT_RATING]							= statsColors.critical,
-	[L[statstr]:gsub('STAT', ITEM_MOD_DODGE_RATING_SHORT)]			= statsColors.dodge,
-	[statstr:gsub('STAT', ITEM_MOD_DODGE_RATING_SHORT)]				= statsColors.dodge,
-	-- [L['Equip: '] .. ITEM_MOD_DODGE_RATING]							= statsColors.dodge,
-
-	[ITEM_MOD_STAMINA]		= statsColors.stamina,
-	[ITEM_MOD_HEALTH]		= statsColors.health,
-
-	[ITEM_MOD_INTELLECT]	= statsColors.intellect,
-	[ITEM_MOD_MANA]			= statsColors.mana,
-
+	[L[statstr]:gsub('STAT', ITEM_MOD_HASTE_RATING_SHORT)]			= statsColors.haste,
+	[statstr:gsub('STAT', ITEM_MOD_HASTE_RATING_SHORT)]				= statsColors.haste,
+	[L[statstr]:gsub('STAT', ITEM_MOD_MASTERY_RATING_SHORT)]		= statsColors.mastery,
+	[statstr:gsub('STAT', ITEM_MOD_MASTERY_RATING_SHORT)]			= statsColors.mastery,
+	[L[statstr]:gsub('STAT', ITEM_MOD_CR_MULTISTRIKE_RATING_SHORT)]	= statsColors.multistrike,
+	[statstr:gsub('STAT', ITEM_MOD_CR_MULTISTRIKE_RATING_SHORT)]	= statsColors.multistrike,
+	[L[statstr]:gsub('STAT', ITEM_MOD_VERSATILITY)]					= statsColors.versatility,
+	[statstr:gsub('STAT', ITEM_MOD_VERSATILITY)]					= statsColors.versatility,
+	[L[statstr]:gsub('STAT', ITEM_MOD_EXTRA_ARMOR_SHORT)]			= statsColors.bonusArmor,
+	[statstr:gsub('STAT', ITEM_MOD_EXTRA_ARMOR_SHORT)]				= statsColors.bonusArmor,
 	[ITEM_MOD_SPIRIT]												= statsColors.spirit,
-	[L[statstr]:gsub('STAT', ITEM_MOD_HEALTH_REGENERATION_SHORT)]	= statsColors.hp5,
-	[statstr:gsub('STAT', ITEM_MOD_HEALTH_REGENERATION_SHORT)]		= statsColors.hp5,
-	-- [L['Equip: '] .. ITEM_MOD_HEALTH_REGENERATION]						= statsColors.hp5,
-	[L[statstr]:gsub('STAT', ITEM_MOD_MANA_REGENERATION_SHORT)]		= statsColors.mp5,
-	[statstr:gsub('STAT', ITEM_MOD_MANA_REGENERATION_SHORT)]		= statsColors.mp5,
-	-- [L['Equip: '] .. ITEM_MOD_MANA_REGENERATION]						= statsColors.mp5,
-
-	[DAMAGE_TEMPLATE]											= statsColors.weaponDamage,
-	[SPEED .. ' %.2f']											= statsColors.weaponSpeed,
-	[ITEM_MOD_FERAL_ATTACK_POWER]								= statsColors.feralPower,
-	[L[statstr]:gsub('STAT', ITEM_MOD_HIT_RATING_SHORT)]		= statsColors.hit,
-	[statstr:gsub('STAT', ITEM_MOD_HIT_RATING_SHORT)]			= statsColors.hit,
-	-- [L['Equip: '] .. ITEM_MOD_HIT_RATING]						= statsColors.hit,
-	[L[statstr]:gsub('STAT', ITEM_MOD_HASTE_RATING_SHORT)]		= statsColors.haste,
-	[statstr:gsub('STAT', ITEM_MOD_HASTE_RATING_SHORT)]			= statsColors.haste,
-	-- [L['Equip: '] .. ITEM_MOD_HASTE_RATING]						= statsColors.haste,
-	[L[statstr]:gsub('STAT', ITEM_MOD_EXPERTISE_RATING_SHORT)]	= statsColors.expertise,
-	[statstr:gsub('STAT', ITEM_MOD_EXPERTISE_RATING_SHORT)]		= statsColors.expertise,
-	-- [L['Equip: '] .. ITEM_MOD_EXPERTISE_RATING]					= statsColors.expertise,
-
-	[L[statstr]:gsub('STAT', ITEM_MOD_SPELL_POWER_SHORT)]		= statsColors.spellPower,
-	[statstr:gsub('STAT', ITEM_MOD_SPELL_POWER_SHORT)]			= statsColors.spellPower,
-	-- [L['Equip: '] .. ITEM_MOD_SPELL_POWER]						= statsColors.spellPower,
-	[L[statstr]:gsub('STAT', ITEM_MOD_SPELL_PENETRATION_SHORT)]	= statsColors.spellPenetration,
-	[statstr:gsub('STAT', ITEM_MOD_SPELL_PENETRATION_SHORT)]	= statsColors.spellPenetration,
-	-- [L['Equip: '] .. ITEM_MOD_SPELL_PENETRATION]				= statsColors.spellPenetration,
-
-	[L[statstr]:gsub('STAT', ITEM_MOD_DEFENSE_SKILL_RATING_SHORT)]	= statsColors.defense,
-	[statstr:gsub('STAT', ITEM_MOD_DEFENSE_SKILL_RATING_SHORT)]		= statsColors.defense,
-	-- [L['Equip: '] .. ITEM_MOD_DEFENSE_SKILL_RATING]					= statsColors.defense,
-	[L[statstr]:gsub('STAT', ITEM_MOD_BLOCK_RATING_SHORT)]			= statsColors.blockRating,
-	[statstr:gsub('STAT', ITEM_MOD_BLOCK_RATING_SHORT)]				= statsColors.blockRating,
-	-- [L['Equip: '] .. ITEM_MOD_BLOCK_RATING]							= statsColors.blockRating,
 
 	[L[statstr]:gsub('STAT', ITEM_MOD_RESILIENCE_RATING_SHORT)]		= statsColors.resilience,
 	[statstr:gsub('STAT', ITEM_MOD_RESILIENCE_RATING_SHORT)]		= statsColors.resilience,
-	-- [L['Equip: '] .. ITEM_MOD_RESILIENCE_RATING]						= statsColors.resilience,
 	[L[statstr]:gsub('STAT', ITEM_MOD_PVP_POWER_SHORT)]				= statsColors.pvppower,
 	[statstr:gsub('STAT', ITEM_MOD_PVP_POWER_SHORT)]				= statsColors.pvppower,
-	-- [L['Equip: '] .. ITEM_MOD_PVP_POWER]							= statsColors.pvppower,
-	-- [L['Equip: '] .. L['Increases your pvp power by %s (Unique).']]	= statsColors.pvppower,
 
-	[L[statstr]:gsub('STAT', ITEM_MOD_MASTERY_RATING_SHORT)]	= statsColors.mastery,
-	[statstr:gsub('STAT', ITEM_MOD_MASTERY_RATING_SHORT)]		= statsColors.mastery,
-	-- [L['Equip: '] .. ITEM_MOD_MASTERY_RATING]					= statsColors.mastery,
+	[L[statstr]:gsub('STAT', ITEM_MOD_CR_AVOIDANCE_SHORT)]	= statsColors.avoidance,
+	[statstr:gsub('STAT', ITEM_MOD_CR_AVOIDANCE_SHORT)]		= statsColors.avoidance,
+	[L[statstr]:gsub('STAT', ITEM_MOD_CR_LIFESTEEL_SHORT)]	= statsColors.leech,
+	[statstr:gsub('STAT', ITEM_MOD_CR_LIFESTEEL_SHORT)]		= statsColors.leech,
+	[L[statstr]:gsub('STAT', ITEM_MOD_CR_SPEED_SHORT)]		= statsColors.speed,
+	[statstr:gsub('STAT', ITEM_MOD_CR_SPEED_SHORT)]			= statsColors.speed,
 
-	[L['%s %s Damage']:format('%c%d', L['Arcane'])]	= statsColors.arcaneDamage, -- Wands
-	[L['%s %s Damage']:format('%c%d', L['Fire'])]	= statsColors.fireDamage,
-	[L['%s %s Damage']:format('%c%d', L['Frost'])]	= statsColors.frostDamage,
-	[L['%s %s Damage']:format('%c%d', L['Nature'])]	= statsColors.natureDamage,
-	[L['%s %s Damage']:format('%c%d', L['Shadow'])]	= statsColors.shadowDamage,
+	[DAMAGE_TEMPLATE]	= statsColors.weaponDamage,
+	[SPEED .. ' %.2f']	= statsColors.weaponSpeed,
+	[ARMOR_TEMPLATE]	= statsColors.armor,
 
-	[L['%s - %s %s Damage']:format('%d', '%d', L['Arcane'])]	= statsColors.arcaneDamage, -- Wands
-	[L['%s - %s %s Damage']:format('%d', '%d', L['Fire'])]		= statsColors.fireDamage,
-	[L['%s - %s %s Damage']:format('%d', '%d', L['Frost'])]		= statsColors.frostDamage,
-	[L['%s - %s %s Damage']:format('%d', '%d', L['Nature'])]	= statsColors.natureDamage,
-	[L['%s - %s %s Damage']:format('%d', '%d', L['Shadow'])]	= statsColors.shadowDamage,
+	[SINGLE_DAMAGE_TEMPLATE_WITH_SCHOOL:format('%c%d', STRING_SCHOOL_ARCANE)]	= statsColors.arcaneDamage, -- Wands
+	[SINGLE_DAMAGE_TEMPLATE_WITH_SCHOOL:format('%c%d', STRING_SCHOOL_FIRE)]		= statsColors.fireDamage,
+	[SINGLE_DAMAGE_TEMPLATE_WITH_SCHOOL:format('%c%d', STRING_SCHOOL_FROST)]	= statsColors.frostDamage,
+	[SINGLE_DAMAGE_TEMPLATE_WITH_SCHOOL:format('%c%d', STRING_SCHOOL_NATURE)]	= statsColors.natureDamage,
+	[SINGLE_DAMAGE_TEMPLATE_WITH_SCHOOL:format('%c%d', STRING_SCHOOL_SHADOW)]	= statsColors.shadowDamage,
 
-	[L['%s %s Resistance']:format('%c%d', L['Arcane'])]	= statsColors.arcaneResist,
-	[L['%s %s Resistance']:format('%c%d', L['Fire'])]	= statsColors.fireResist,
-	[L['%s %s Resistance']:format('%c%d', L['Frost'])]	= statsColors.frostResist,
-	[L['%s %s Resistance']:format('%c%d', L['Nature'])]	= statsColors.natureResist,
-	[L['%s %s Resistance']:format('%c%d', L['Shadow'])]	= statsColors.shadowResist,
+	[DAMAGE_TEMPLATE_WITH_SCHOOL:format('%d', '%d', STRING_SCHOOL_ARCANE)]	= statsColors.arcaneDamage, -- Wands
+	[DAMAGE_TEMPLATE_WITH_SCHOOL:format('%d', '%d', STRING_SCHOOL_FIRE)]	= statsColors.fireDamage,
+	[DAMAGE_TEMPLATE_WITH_SCHOOL:format('%d', '%d', STRING_SCHOOL_FROST)]	= statsColors.frostDamage,
+	[DAMAGE_TEMPLATE_WITH_SCHOOL:format('%d', '%d', STRING_SCHOOL_NATURE)]	= statsColors.natureDamage,
+	[DAMAGE_TEMPLATE_WITH_SCHOOL:format('%d', '%d', STRING_SCHOOL_SHADOW)]	= statsColors.shadowDamage,
+
+	[ITEM_RESIST_SINGLE:gsub('%%s', STRING_SCHOOL_ARCANE)]	= statsColors.arcaneResist,
+	[ITEM_RESIST_SINGLE:gsub('%%s', STRING_SCHOOL_FIRE)]	= statsColors.fireResist,
+	[ITEM_RESIST_SINGLE:gsub('%%s', STRING_SCHOOL_FROST)]	= statsColors.frostResist,
+	[ITEM_RESIST_SINGLE:gsub('%%s', STRING_SCHOOL_NATURE)]	= statsColors.natureResist,
+	[ITEM_RESIST_SINGLE:gsub('%%s', STRING_SCHOOL_SHADOW)]	= statsColors.shadowResist,
 }
 
 local gems = {
@@ -185,6 +145,9 @@ local gems = {
 
 --  (no epic red gem)
 
+--  WoD
+	
+
 -- Green
 --  BC
 	['interface\\icons\\inv_misc_gem_deepperidot_01']				= statsColors.greenGem,
@@ -216,6 +179,9 @@ local gems = {
 	['interface\\icons\\inv_misc_gem_x4_rare_cut_green']			= statsColors.greenGem,
 
 --  (epic green gem same as uncommon cut)
+
+--  WoD
+	
 
 -- Yellow
 --  BC
@@ -250,6 +216,9 @@ local gems = {
 
 --  (no epic yellow gem)
 
+--  WoD
+	
+
 -- Orange
 --  BC
 	['interface\\icons\\inv_misc_gem_opal_01']				= statsColors.orangeGem,
@@ -282,6 +251,9 @@ local gems = {
 
 --  (epic orange gem same as uncommon cut)
 
+--  WoD
+	
+
 -- Blue
 --  BC
 	['interface\\icons\\inv_misc_gem_crystal_03']				= statsColors.blueGem,
@@ -313,6 +285,9 @@ local gems = {
 
 --  (no epic blue gem)
 
+--  WoD
+	
+
 -- Purple
 --  BC
 	['interface\\icons\\inv_misc_gem_ebondraenite_02']		= statsColors.purpleGem,
@@ -340,6 +315,9 @@ local gems = {
 	['interface\\icons\\inv_misc_gem_x4_rare_cut_purple']			= statsColors.purpleGem,
 
 --  (epic purple gem same as uncommon cut)
+
+--  WoD
+	
 
 -- Prismatic
 	['interface\\icons\\inv_misc_gem_pearl_10']				= statsColors.prismaticGem,
@@ -469,7 +447,6 @@ function StatStain2_modifyTooltip(tooltip)
 		end
 	end
 
-	local name = tooltip:GetName()
 	for i = 1, 5 do
 		local texture = _G[name .. 'Texture' .. i] -- TODO: Legacy code
 		if texture and type(texture) == 'table' and texture.GetPoint and texture:IsShown() then

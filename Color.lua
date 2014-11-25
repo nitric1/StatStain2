@@ -1,56 +1,54 @@
 statsColors = {
--- Strength
+-- Attribute
+-- Primary
 	strength		= 'ffff000a',
-	attackPower		= 'ffff007d',
-	blockValue		= 'ffa09060',
-	parry			= 'fff600ff',
-
--- Agility
 	agility			= 'ffffee03',
-	rangedPower		= 'ffba1b6a',
-	armor			= 'ffb9b9b9',
-	critical		= 'ffe8850d',
-	dodge			= 'ffbcff00',
-
--- Stamina
-	stamina			= 'ffdda357',
-	health			= 'fff4bf8a',
-
--- Intellect
 	intellect		= 'ffb395ff',
-	mana			= 'ffb840ff',
+	stamina			= 'ffdda357',
 
--- Spirit
-	spirit			= 'ff00ff55',
-	hp5				= 'ffff99ad',
-	mp5				= 'ff00acff',
-
--- Common (Physical & Spell)
-	hit				= 'ff00ffba',
+-- Secondary
+	critical		= 'ffe8850d',
 	haste			= 'ffcccc66',
-
--- Physical
-	weaponDamage	= 'ffff8930',
-	weaponSpeed		= 'ffe6ff8b', -- RESERVED: may not be used because weapon speed is shown in a tooltip's right section
-	feralPower		= 'ffff80c0',
-	expertise		= 'ffffcc00',
-
--- Spell
-	spellPower		= 'fffffb00',
-	spellPenetration	= 'ffe047ff',
-
--- Defense
-	defense			= 'ff3f63ff',
-	blockRating		= 'ffa2793c',
+	mastery			= 'ffd76868',
+	multistrike		= 'ffe047ff', -- <spell penetration
+	versatility		= 'ff00ffba', -- <hit
+	bonusArmor		= 'ffb9b9b9', -- <armor (because it's same as armor)
+	spirit			= 'ff00ff55',
 
 -- PvP
-	resilience		= 'ff686eff', -- (PvP Defense)
+	resilience		= 'ff686eff',
 	pvppower		= 'ff0070de',
 
--- Mastery
-	mastery			= 'ffd76868',
+-- Minor
+	avoidance		= 'ffbcff00', -- <dodge
+	leech			= 'ffff99ad', -- <hp5
+	speed			= 'fff600ff', -- <parry
 
--- Damage
+-- Deprecated
+	--attackPower			= 'ffff007d',
+	--rangedPower			= 'ffba1b6a',
+	--spellPower			= 'fffffb00',
+	--feralPower			= 'ffff80c0',
+	--defense				= 'ff3f63ff',
+	--blockRating			= 'ffa2793c',
+	--blockValue			= 'ffa09060',
+	--parry				= 'fff600ff',
+	--dodge				= 'ffbcff00',
+	--health				= 'fff4bf8a',
+	--mana				= 'ffb840ff',
+	--hp5					= 'ffff99ad',
+	--mp5					= 'ff00acff',
+	--hit					= 'ff00ffba',
+	--expertise			= 'ffffcc00',
+	--spellPenetration	= 'ffe047ff',
+
+-- Non-attribute item stat
+-- Common
+	weaponDamage	= 'ffff8930',
+	weaponSpeed		= 'ffe6ff8b', -- RESERVED: I don't know why right section texts in tooltips are not grabbed
+	armor			= 'ffb9b9b9',
+
+-- Wand
 	arcaneDamage	= 'ffb3eeff',
 	fireDamage		= 'ffff5d00',
 	frostDamage		= 'ff0b71ff',
