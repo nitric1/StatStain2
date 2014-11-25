@@ -212,33 +212,33 @@ local gems = {
 
 -- Orange
 --  BC
-	['interface\\icons\\inv_misc_gem_opal_01']				= statsColors.orangeGem,
-	['interface\\icons\\inv_misc_gem_opal_02']				= statsColors.orangeGem,
-	['interface\\icons\\inv_misc_gem_opal_03']				= statsColors.orangeGem,
-	['interface\\icons\\inv_misc_gem_flamespessarite_02']	= statsColors.orangeGem,
-	['interface\\icons\\inv_jewelcrafting_nobletopaz_03']	= statsColors.orangeGem,
-	['interface\\icons\\inv_jewelcrafting_pyrestone_02']	= statsColors.orangeGem,
+	['interface\\icons\\inv_misc_gem_opal_01']							= statsColors.orangeGem,
+	['interface\\icons\\inv_misc_gem_opal_02']							= statsColors.orangeGem,
+	['interface\\icons\\inv_misc_gem_opal_03']							= statsColors.orangeGem,
+	['interface\\icons\\inv_misc_gem_flamespessarite_02']				= statsColors.orangeGem,
+	['interface\\icons\\inv_jewelcrafting_nobletopaz_03']				= statsColors.orangeGem,
+	['interface\\icons\\inv_jewelcrafting_pyrestone_02']				= statsColors.orangeGem,
 
 --  WotLK
-	['interface\\icons\\inv_jewelcrafting_gem_20']			= statsColors.orangeGem,
-	['interface\\icons\\inv_jewelcrafting_gem_14']			= statsColors.orangeGem,
+	['interface\\icons\\inv_jewelcrafting_gem_20']						= statsColors.orangeGem,
+	['interface\\icons\\inv_jewelcrafting_gem_14']						= statsColors.orangeGem,
 
-	['interface\\icons\\inv_jewelcrafting_gem_30']			= statsColors.orangeGem,
+	['interface\\icons\\inv_jewelcrafting_gem_30']						= statsColors.orangeGem,
 
-	['interface\\icons\\inv_jewelcrafting_gem_39']			= statsColors.orangeGem,
+	['interface\\icons\\inv_jewelcrafting_gem_39']						= statsColors.orangeGem,
 
 --  Cat
-	['interface\\icons\\inv_misc_cutgemnormal3a']			= statsColors.orangeGem,
+	['interface\\icons\\inv_misc_cutgemnormal3a']						= statsColors.orangeGem,
 
-	['interface\\icons\\inv_misc_cutgemsuperior4']			= statsColors.orangeGem,
+	['interface\\icons\\inv_misc_cutgemsuperior4']						= statsColors.orangeGem,
 
-	['interface\\icons\\inv_misc_epicgem_04']				= statsColors.orangeGem,
+	['interface\\icons\\inv_misc_epicgem_04']							= statsColors.orangeGem,
 
 --  MoP
-	['interface\\icons\\inv_misc_gem_x4_uncommon_cut_orange']		= statsColors.orangeGem,
+	['interface\\icons\\inv_misc_gem_x4_uncommon_cut_orange']			= statsColors.orangeGem,
 
 	['interface\\icons\\inv_misc_gem_x4_uncommon_perfectcut_orange']	= statsColors.orangeGem,
-	['interface\\icons\\inv_misc_gem_x4_rare_cut_orange']			= statsColors.orangeGem,
+	['interface\\icons\\inv_misc_gem_x4_rare_cut_orange']				= statsColors.orangeGem,
 
 --  (epic orange gem same as uncommon cut)
 
@@ -275,29 +275,29 @@ local gems = {
 
 -- Purple
 --  BC
-	['interface\\icons\\inv_misc_gem_ebondraenite_02']		= statsColors.purpleGem,
-	['interface\\icons\\inv_jewelcrafting_nightseye_03']	= statsColors.purpleGem,
+	['interface\\icons\\inv_misc_gem_ebondraenite_02']					= statsColors.purpleGem,
+	['interface\\icons\\inv_jewelcrafting_nightseye_03']				= statsColors.purpleGem,
 
 --  WotLK
-	['interface\\icons\\inv_jewelcrafting_gem_23']			= statsColors.purpleGem,
-	['interface\\icons\\inv_jewelcrafting_gem_18']			= statsColors.purpleGem,
+	['interface\\icons\\inv_jewelcrafting_gem_23']						= statsColors.purpleGem,
+	['interface\\icons\\inv_jewelcrafting_gem_18']						= statsColors.purpleGem,
 
-	['interface\\icons\\inv_jewelcrafting_gem_29']			= statsColors.purpleGem,
+	['interface\\icons\\inv_jewelcrafting_gem_29']						= statsColors.purpleGem,
 
-	['interface\\icons\\inv_jewelcrafting_gem_40']			= statsColors.purpleGem,
+	['interface\\icons\\inv_jewelcrafting_gem_40']						= statsColors.purpleGem,
 
 --  Cat
-	['interface\\icons\\inv_misc_cutgemnormal2a']			= statsColors.purpleGem,
+	['interface\\icons\\inv_misc_cutgemnormal2a']						= statsColors.purpleGem,
 
-	['interface\\icons\\inv_misc_cutgemsuperior3']			= statsColors.purpleGem,
+	['interface\\icons\\inv_misc_cutgemsuperior3']						= statsColors.purpleGem,
 
-	['interface\\icons\\inv_misc_epicgem_05']				= statsColors.purpleGem,
+	['interface\\icons\\inv_misc_epicgem_05']							= statsColors.purpleGem,
 
 --  MoP
-	['interface\\icons\\inv_misc_gem_x4_uncommon_cut_purple']		= statsColors.purpleGem,
+	['interface\\icons\\inv_misc_gem_x4_uncommon_cut_purple']			= statsColors.purpleGem,
 
 	['interface\\icons\\inv_misc_gem_x4_uncommon_perfectcut_purple']	= statsColors.purpleGem,
-	['interface\\icons\\inv_misc_gem_x4_rare_cut_purple']			= statsColors.purpleGem,
+	['interface\\icons\\inv_misc_gem_x4_rare_cut_purple']				= statsColors.purpleGem,
 
 --  (epic purple gem same as uncommon cut)
 
@@ -409,6 +409,7 @@ end
 
 function StatStain2_modifyTooltip(tooltip)
 	local regions = { tooltip:GetRegions() }
+	local name = tooltip:GetName()
 	for i = 1, #regions do
 		local sobj = regions[i]
 		if sobj and sobj:GetObjectType() == "FontString" then

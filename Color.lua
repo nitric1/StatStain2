@@ -22,7 +22,7 @@ statsColors = {
 -- Minor
 	avoidance		= 'ffbcff00', -- <dodge
 	leech			= 'ffff99ad', -- <hp5
-	speed			= 'fff600ff', -- <parry
+	speed			= 'ffba1b6a', -- <parry
 
 -- Deprecated
 	--attackPower			= 'ffff007d',
