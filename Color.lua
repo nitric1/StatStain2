@@ -29,20 +29,21 @@ statsColors = {
 	speed			= 'ffba1b6a', -- <ranged power
 
 -- Other
-	attackPower		= 'ffff007d',
 	spellPower		= 'fffffb00',
 
+-- Old
+	attackPower		= 'ffff007d',
+	hp5				= 'ffff99ad',
+
 -- Deprecated
-	--
 	--rangedPower			= 'ffba1b6a',
 	--feralPower			= 'ffff80c0',
 	--defense				= 'ff3f63ff',
 	--blockRating			= 'ffa2793c',
 	--blockValue			= 'ffa09060',
-	--health				= 'fff4bf8a',
-	--mana				= 'ffb840ff',
-	--hp5					= 'ffff99ad',
-	--mp5					= 'ff00acff',
+	--health				= 'fff4bf8a', -- >stamina
+	--mana				= 'ffb840ff', -- >intellect
+	--mp5					= 'ff00acff', -- >spirit
 	--hit					= 'ff00ffba',
 	--expertise			= 'ffffcc00',
 	--spellPenetration	= 'ffe047ff',
@@ -66,6 +67,7 @@ statsColors = {
 	frostResist		= 'ff188bff',
 	natureResist	= 'ff86ff3c',
 	shadowResist	= 'ffbd33b1',
+	allResist		= 'ffccccf0',
 
 -- Gem
 	redGem			= 'ffff2c24',

@@ -31,6 +31,7 @@
 --	statsColors.leech		= ''
 --	statsColors.speed		= ''
 
+--	statsColors.attackPower	= ''
 --	statsColors.spellPower	= ''
 
 --	statsColors.weaponDamage	= ''
