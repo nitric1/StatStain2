@@ -1,0 +1,13 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+	<Script file="Color.lua" />
+	<Script file="Color.User.lua" />
+	<Script file="Main.lua" />
+
+	<Frame name="StatStain2" hidden="true">
+		<Scripts>
+			<OnLoad>
+				StatStain2_onLoad();
+			</OnLoad>
+		</Scripts>
+	</Frame>
+</Ui>
