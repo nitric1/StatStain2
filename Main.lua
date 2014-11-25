@@ -59,19 +59,19 @@ local transforms = {
 	[ITEM_MOD_STAMINA]		= statsColors.stamina,
 	[ITEM_MOD_INTELLECT]	= statsColors.intellect,
 
-	[L[statstr]:gsub('STAT', ITEM_MOD_CRIT_RATING_SHORT)]			= statsColors.critical,
-	[statstr:gsub('STAT', ITEM_MOD_CRIT_RATING_SHORT)]				= statsColors.critical,
-	[L[statstr]:gsub('STAT', ITEM_MOD_HASTE_RATING_SHORT)]			= statsColors.haste,
-	[statstr:gsub('STAT', ITEM_MOD_HASTE_RATING_SHORT)]				= statsColors.haste,
-	[L[statstr]:gsub('STAT', ITEM_MOD_MASTERY_RATING_SHORT)]		= statsColors.mastery,
-	[statstr:gsub('STAT', ITEM_MOD_MASTERY_RATING_SHORT)]			= statsColors.mastery,
-	[L[statstr]:gsub('STAT', ITEM_MOD_CR_MULTISTRIKE_RATING_SHORT)]	= statsColors.multistrike,
-	[statstr:gsub('STAT', ITEM_MOD_CR_MULTISTRIKE_RATING_SHORT)]	= statsColors.multistrike,
-	[L[statstr]:gsub('STAT', ITEM_MOD_VERSATILITY)]					= statsColors.versatility,
-	[statstr:gsub('STAT', ITEM_MOD_VERSATILITY)]					= statsColors.versatility,
-	[L[statstr]:gsub('STAT', ITEM_MOD_EXTRA_ARMOR_SHORT)]			= statsColors.bonusArmor,
-	[statstr:gsub('STAT', ITEM_MOD_EXTRA_ARMOR_SHORT)]				= statsColors.bonusArmor,
-	[ITEM_MOD_SPIRIT]												= statsColors.spirit,
+	[L[statstr]:gsub('STAT', ITEM_MOD_CRIT_RATING_SHORT)]		= statsColors.critical,
+	[statstr:gsub('STAT', ITEM_MOD_CRIT_RATING_SHORT)]			= statsColors.critical,
+	[L[statstr]:gsub('STAT', ITEM_MOD_HASTE_RATING_SHORT)]		= statsColors.haste,
+	[statstr:gsub('STAT', ITEM_MOD_HASTE_RATING_SHORT)]			= statsColors.haste,
+	[L[statstr]:gsub('STAT', ITEM_MOD_MASTERY_RATING_SHORT)]	= statsColors.mastery,
+	[statstr:gsub('STAT', ITEM_MOD_MASTERY_RATING_SHORT)]		= statsColors.mastery,
+	[L[statstr]:gsub('STAT', ITEM_MOD_CR_MULTISTRIKE_SHORT)]	= statsColors.multistrike,
+	[statstr:gsub('STAT', ITEM_MOD_CR_MULTISTRIKE_SHORT)]		= statsColors.multistrike,
+	[L[statstr]:gsub('STAT', ITEM_MOD_VERSATILITY)]				= statsColors.versatility,
+	[statstr:gsub('STAT', ITEM_MOD_VERSATILITY)]				= statsColors.versatility,
+	[L[statstr]:gsub('STAT', ITEM_MOD_EXTRA_ARMOR_SHORT)]		= statsColors.bonusArmor,
+	[statstr:gsub('STAT', ITEM_MOD_EXTRA_ARMOR_SHORT)]			= statsColors.bonusArmor,
+	[ITEM_MOD_SPIRIT]											= statsColors.spirit,
 
 	[L[statstr]:gsub('STAT', ITEM_MOD_RESILIENCE_RATING_SHORT)]		= statsColors.resilience,
 	[statstr:gsub('STAT', ITEM_MOD_RESILIENCE_RATING_SHORT)]		= statsColors.resilience,
@@ -80,8 +80,8 @@ local transforms = {
 
 	[L[statstr]:gsub('STAT', ITEM_MOD_CR_AVOIDANCE_SHORT)]	= statsColors.avoidance,
 	[statstr:gsub('STAT', ITEM_MOD_CR_AVOIDANCE_SHORT)]		= statsColors.avoidance,
-	[L[statstr]:gsub('STAT', ITEM_MOD_CR_LIFESTEEL_SHORT)]	= statsColors.leech,
-	[statstr:gsub('STAT', ITEM_MOD_CR_LIFESTEEL_SHORT)]		= statsColors.leech,
+	[L[statstr]:gsub('STAT', ITEM_MOD_CR_LIFESTEAL_SHORT)]	= statsColors.leech,
+	[statstr:gsub('STAT', ITEM_MOD_CR_LIFESTEAL_SHORT)]		= statsColors.leech,
 	[L[statstr]:gsub('STAT', ITEM_MOD_CR_SPEED_SHORT)]		= statsColors.speed,
 	[statstr:gsub('STAT', ITEM_MOD_CR_SPEED_SHORT)]			= statsColors.speed,
 
@@ -145,9 +145,6 @@ local gems = {
 
 --  (no epic red gem)
 
---  WoD
-	
-
 -- Green
 --  BC
 	['interface\\icons\\inv_misc_gem_deepperidot_01']				= statsColors.greenGem,
@@ -179,9 +176,6 @@ local gems = {
 	['interface\\icons\\inv_misc_gem_x4_rare_cut_green']			= statsColors.greenGem,
 
 --  (epic green gem same as uncommon cut)
-
---  WoD
-	
 
 -- Yellow
 --  BC
@@ -216,9 +210,6 @@ local gems = {
 
 --  (no epic yellow gem)
 
---  WoD
-	
-
 -- Orange
 --  BC
 	['interface\\icons\\inv_misc_gem_opal_01']				= statsColors.orangeGem,
@@ -251,9 +242,6 @@ local gems = {
 
 --  (epic orange gem same as uncommon cut)
 
---  WoD
-	
-
 -- Blue
 --  BC
 	['interface\\icons\\inv_misc_gem_crystal_03']				= statsColors.blueGem,
@@ -285,9 +273,6 @@ local gems = {
 
 --  (no epic blue gem)
 
---  WoD
-	
-
 -- Purple
 --  BC
 	['interface\\icons\\inv_misc_gem_ebondraenite_02']		= statsColors.purpleGem,
@@ -316,16 +301,30 @@ local gems = {
 
 --  (epic purple gem same as uncommon cut)
 
---  WoD
-	
-
 -- Prismatic
+--  BC
 	['interface\\icons\\inv_misc_gem_pearl_10']				= statsColors.prismaticGem,
 
 	['interface\\icons\\inv_enchant_voidsphere']			= statsColors.prismaticGem,
 	['interface\\icons\\inv_enchant_prismaticsphere']		= statsColors.prismaticGem,
 
+--  WotLK
 	['interface\\icons\\inv_misc_gem_pearl_12']				= statsColors.prismaticGem,
+
+--  WoD
+	['interface\\icons\\inv_jewelcrafting_46']				= statsColors.prismaticGem, -- (red icon)
+	['interface\\icons\\inv_jewelcrafting_44']				= statsColors.prismaticGem, -- (green icon)
+	['interface\\icons\\inv_jewelcrafting_43']				= statsColors.prismaticGem, -- (yellow icon)
+	['interface\\icons\\inv_jewelcrafting_45']				= statsColors.prismaticGem, -- (orange icon)
+	['interface\\icons\\inv_jewelcrafting_48']				= statsColors.prismaticGem, -- (blue icon)
+	['interface\\icons\\inv_jewelcrafting_47']				= statsColors.prismaticGem, -- (purple icon)
+
+	['interface\\icons\\inv_jewelcrafting_52']				= statsColors.prismaticGem, -- (red icon)
+	['interface\\icons\\inv_jewelcrafting_50']				= statsColors.prismaticGem, -- (green icon)
+	['interface\\icons\\inv_jewelcrafting_49']				= statsColors.prismaticGem, -- (yellow icon)
+	['interface\\icons\\inv_jewelcrafting_51']				= statsColors.prismaticGem, -- (orange icon)
+	['interface\\icons\\inv_jewelcrafting_54']				= statsColors.prismaticGem, -- (blue icon)
+	['interface\\icons\\inv_jewelcrafting_53']				= statsColors.prismaticGem, -- (purple icon)
 
 -- Meta
 --  BC
