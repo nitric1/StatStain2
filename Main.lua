@@ -8,7 +8,7 @@
 
 local L = StatStain2Locale
 local AppName = L['StatStain2: StatStain Rebuilt']
-local Version = '0.11.3'
+local Version = '0.11.4'
 local AppFullName = AppName .. ' ' .. Version
 
 local tooltips = {
@@ -121,6 +121,11 @@ local transforms = {
 	[ITEM_RESIST_SINGLE:gsub('%%%d?%$?([cds])', '%%%1'):gsub('%%s', STRING_SCHOOL_NATURE)]	= statsColors.natureResist,
 	[ITEM_RESIST_SINGLE:gsub('%%%d?%$?([cds])', '%%%1'):gsub('%%s', STRING_SCHOOL_SHADOW)]	= statsColors.shadowResist,
 	[ITEM_RESIST_ALL]																		= statsColors.allResist,
+}
+
+local whitelists = {
+	ITEM_SOCKET_BONUS,
+	ENCHANTED_TOOLTIP_LINE,
 }
 
 local gems = {
@@ -376,12 +381,12 @@ end
 
 local function convertMatch(str)
 	str = str:gsub('([%.%(%)%%%+%-%*%?%[%]%^%$])', '%%%1')
-	str = str:gsub('(%%%%s)', '.+')
+	str = str:gsub('(%%%%s)', '%%%%c+') -- will be replaced below
 	str = str:gsub('(%%%%d)', '%%d+')
 	str = str:gsub('(%%%%%d+d)', '%%d+')
-	str = str:gsub('(%%%%f)', '%d+%%.?%%d*')
-	str = str:gsub('(%%%%c)', '.')
-	str = str:gsub('(%%%%%.?%d*f)', '%d+%%.?%%d*')
+	str = str:gsub('(%%%%f)', '%%d+%%.?%%d*')
+	str = str:gsub('(%%%%c)', '%[%^%%s%]')
+	str = str:gsub('(%%%%%%%.?%d*f)', '%%d+%%.?%%d*')
 	return str
 end
 
@@ -391,6 +396,12 @@ function StatStain2_initTransform()
 		new[convertMatch(k)] = v
 	end
 	transforms = new
+
+	new = {}
+	for _, v in ipairs(whitelists) do
+		table.insert(new, convertMatch(v))
+	end
+	whitelists = new
 end
 
 function StatStain2_initTooltip()
@@ -414,66 +425,84 @@ function StatStain2_setTooltipHook(tooltip)
 	end)
 end
 
+local function ltrim(str)
+	return str:gsub('^%s+', '')
+end
+
 local function parseTextColor(str)
 	if str:len() ~= 8 then
 		return 1.0, 1.0, 1.0, 1.0
 	end
-	local a, r, g, b = str:match('(%x%x)(%x%x)(%x%x)(%x%x)')
-	return tonumber(r, 16) / 255, tonumber(g, 16) / 255, tonumber(b, 16) / 255, tonumber(a, 16) / 255
+	local a, r, g, b = str:match('([%x%s]%x)([%x%s]%x)([%x%s]%x)([%x%s]%x)')
+	if not a or not r or not g or not b then
+		return 1.0, 1.0, 1.0, 1.0
+	end
+	return tonumber(ltrim(r), 16) / 255, tonumber(ltrim(g), 16) / 255, tonumber(ltrim(b), 16) / 255, tonumber(ltrim(a), 16) / 255
+end
+
+local function isColorizableText(str)
+	if str:match(L[': ']) then
+		for _, v in ipairs(whitelists) do
+			if str:match(v) then
+				return true
+			end
+		end
+		return false
+	end
+	return true
 end
 
 function StatStain2_modifyTooltip(tooltip)
 	local regions = { tooltip:GetRegions() }
 	local name = tooltip:GetName()
-	for i = 1, #regions do
+
+	for i = 2, #regions do
 		local sobj = regions[i]
-		if sobj and sobj:GetObjectType() == "FontString" then
-			local text = sobj:GetText()
-
-			if text and text ~= '' then
-				local noescape = text:match('^|cffffffff(.+)|r')
-				local r, g, b = sobj:GetTextColor()
-				if noescape then
-					text = noescape
-				end
-				if noescape or (r > 0.95 and g > 0.95) or (r < 0.05 and g > 0.95 and not text:match(L[': '])) then -- Don't apply to Use, Set, Chance on hit (they uses delimiter colon)
-					for k, v in pairs(transforms) do
-						if text:match(k) then
-							if noescape then
-								sobj:SetText(text)
-							end
-							sobj:SetTextColor(parseTextColor(v))
-							break
-						end
-					end
-				end
-			end
-
-			--[[ sobj = _G[name .. 'TextRight' .. i]
-			text = sobj:GetText()
-			if text and text ~= '' then
-				for k, v in pairs(transforms) do
-					if text:match(k) then
-						sobj:SetTextColor(parseTextColor(v))
-						break
-					end
-				end
-			end ]]--
+		if sobj then
+			sobj.StatStain2Checked = false
 		end
 	end
 
-	for i = 1, 5 do
-		local texture = _G[name .. 'Texture' .. i] -- TODO: Legacy code
-		if texture and type(texture) == 'table' and texture.GetPoint and texture:IsShown() then
-			local newColor = gems[strlower(texture:GetTexture())]
-			if newColor then
-				local _, parent = texture:GetPoint()
-				if parent then
-					local text = parent:GetText():match('^|c........(.+)$')
-					if text then
-						parent:SetText(text)
+	for i = 2, #regions do -- skip item name
+		local sobj = regions[i]
+		if sobj and not sobj.StatStain2Checked then
+			if sobj:GetObjectType() == "FontString" then
+				local text = sobj:GetText()
+
+				if text and text ~= '' then
+					local newColor, newText = text:match('^|c(........)(.+)|r$')
+					if newColor and newText then -- regularize color
+						sobj:SetText(newText)
+						sobj:SetTextColor(parseTextColor(newColor))
+						text = newText
+					else
+						newText = text
 					end
-					parent:SetTextColor(parseTextColor(newColor))
+					local r, g, b, _ = sobj:GetTextColor()
+					if ((r < 0.05 and g > 0.95) or (r > 0.95 and g > 0.95)) and isColorizableText(text) then
+						for k, v in pairs(transforms) do
+							if newText:match(k) then
+								newText = newText:gsub('(' .. k .. ')', '|c' .. v .. '%1|r')
+							end
+						end
+					end
+					if text ~= newText then
+						sobj:SetText(newText)
+						sobj.StatStain2Checked = true
+					end
+				end
+			elseif sobj:GetObjectType() == "Texture" and sobj:IsShown() then
+				local newColor = gems[strlower(sobj:GetTexture())]
+				if newColor then
+					local _, parent = sobj:GetPoint()
+					if parent then
+						local text = parent:GetText():match('^|c........(.+)$')
+						if text then
+							parent:SetText(text)
+						end
+						parent:SetTextColor(parseTextColor(newColor))
+						parent.StatStain2Checked = true
+					end
 				end
 			end
 		end
