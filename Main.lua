@@ -6,9 +6,15 @@
   *
   ]]
 
+--[[
+  * Known bugs
+  *   광역회피 +xx (광역회피 색 + 회피 색)
+  *   %에 반응 (이건 정책이긴 한데... +X%는 허용?)
+  ]]
+
 local L = StatStain2Locale
 local AppName = L['StatStain2: StatStain Rebuilt']
-local Version = '0.11.4'
+local Version = '0.11.4-pre2'
 local AppFullName = AppName .. ' ' .. Version
 
 local tooltips = {
@@ -51,7 +57,7 @@ local tooltips = {
 	TooltipScan4,
 }
 
-local statstr = '%c%d STAT'
+local statstr = '%c%s STAT'
 
 local transforms = {
 	[ITEM_MOD_STRENGTH]		= statsColors.strength,
@@ -264,26 +270,26 @@ local gems = {
 
 -- Blue
 --  BC
-	['interface\\icons\\inv_misc_gem_crystal_03']				= statsColors.blueGem,
-	['interface\\icons\\inv_misc_gem_azuredraenite_02']			= statsColors.blueGem,
-	['interface\\icons\\inv_jewelcrafting_starofelune_03']		= statsColors.blueGem,
-	['interface\\icons\\inv_jewelcrafting_empyreansapphire_02']	= statsColors.blueGem,
+	['interface\\icons\\inv_misc_gem_crystal_03']					= statsColors.blueGem,
+	['interface\\icons\\inv_misc_gem_azuredraenite_02']				= statsColors.blueGem,
+	['interface\\icons\\inv_jewelcrafting_starofelune_03']			= statsColors.blueGem,
+	['interface\\icons\\inv_jewelcrafting_empyreansapphire_02']		= statsColors.blueGem,
 
 --  WotLK
-	['interface\\icons\\inv_jewelcrafting_gem_24']			= statsColors.blueGem,
-	['interface\\icons\\inv_jewelcrafting_gem_17']			= statsColors.blueGem,
+	['interface\\icons\\inv_jewelcrafting_gem_24']					= statsColors.blueGem,
+	['interface\\icons\\inv_jewelcrafting_gem_17']					= statsColors.blueGem,
 
-	['interface\\icons\\inv_jewelcrafting_gem_27']			= statsColors.blueGem,
+	['interface\\icons\\inv_jewelcrafting_gem_27']					= statsColors.blueGem,
 
-	['interface\\icons\\inv_jewelcrafting_dragonseye04']	= statsColors.blueGem,
-	['interface\\icons\\inv_jewelcrafting_gem_42']			= statsColors.blueGem,
+	['interface\\icons\\inv_jewelcrafting_dragonseye04']			= statsColors.blueGem,
+	['interface\\icons\\inv_jewelcrafting_gem_42']					= statsColors.blueGem,
 
 --  Cat
-	['interface\\icons\\inv_misc_cutgemperfect3']			= statsColors.blueGem,
+	['interface\\icons\\inv_misc_cutgemperfect3']					= statsColors.blueGem,
 
-	['interface\\icons\\inv_misc_cutgemsuperior2']			= statsColors.blueGem,
+	['interface\\icons\\inv_misc_cutgemsuperior2']					= statsColors.blueGem,
 
-	['interface\\icons\\inv_misc_epicgem_02']				= statsColors.blueGem,
+	['interface\\icons\\inv_misc_epicgem_02']						= statsColors.blueGem,
 
 --  MoP
 	['interface\\icons\\inv_misc_gem_x4_uncommon_cut_blue']			= statsColors.blueGem,
@@ -323,28 +329,28 @@ local gems = {
 
 -- Prismatic
 --  BC
-	['interface\\icons\\inv_misc_gem_pearl_10']				= statsColors.prismaticGem,
+	['interface\\icons\\inv_misc_gem_pearl_10']			= statsColors.prismaticGem,
 
-	['interface\\icons\\inv_enchant_voidsphere']			= statsColors.prismaticGem,
-	['interface\\icons\\inv_enchant_prismaticsphere']		= statsColors.prismaticGem,
+	['interface\\icons\\inv_enchant_voidsphere']		= statsColors.prismaticGem,
+	['interface\\icons\\inv_enchant_prismaticsphere']	= statsColors.prismaticGem,
 
 --  WotLK
-	['interface\\icons\\inv_misc_gem_pearl_12']				= statsColors.prismaticGem,
+	['interface\\icons\\inv_misc_gem_pearl_12']			= statsColors.prismaticGem,
 
 --  WoD
-	['interface\\icons\\inv_jewelcrafting_46']				= statsColors.prismaticGem, -- (red icon)
-	['interface\\icons\\inv_jewelcrafting_44']				= statsColors.prismaticGem, -- (green icon)
-	['interface\\icons\\inv_jewelcrafting_43']				= statsColors.prismaticGem, -- (yellow icon)
-	['interface\\icons\\inv_jewelcrafting_45']				= statsColors.prismaticGem, -- (orange icon)
-	['interface\\icons\\inv_jewelcrafting_48']				= statsColors.prismaticGem, -- (blue icon)
-	['interface\\icons\\inv_jewelcrafting_47']				= statsColors.prismaticGem, -- (purple icon)
+	['interface\\icons\\inv_jewelcrafting_46']			= statsColors.prismaticGem, -- (red icon)
+	['interface\\icons\\inv_jewelcrafting_44']			= statsColors.prismaticGem, -- (green icon)
+	['interface\\icons\\inv_jewelcrafting_43']			= statsColors.prismaticGem, -- (yellow icon)
+	['interface\\icons\\inv_jewelcrafting_45']			= statsColors.prismaticGem, -- (orange icon)
+	['interface\\icons\\inv_jewelcrafting_48']			= statsColors.prismaticGem, -- (blue icon)
+	['interface\\icons\\inv_jewelcrafting_47']			= statsColors.prismaticGem, -- (purple icon)
 
-	['interface\\icons\\inv_jewelcrafting_52']				= statsColors.prismaticGem, -- (red icon)
-	['interface\\icons\\inv_jewelcrafting_50']				= statsColors.prismaticGem, -- (green icon)
-	['interface\\icons\\inv_jewelcrafting_49']				= statsColors.prismaticGem, -- (yellow icon)
-	['interface\\icons\\inv_jewelcrafting_51']				= statsColors.prismaticGem, -- (orange icon)
-	['interface\\icons\\inv_jewelcrafting_54']				= statsColors.prismaticGem, -- (blue icon)
-	['interface\\icons\\inv_jewelcrafting_53']				= statsColors.prismaticGem, -- (purple icon)
+	['interface\\icons\\inv_jewelcrafting_52']			= statsColors.prismaticGem, -- (red icon)
+	['interface\\icons\\inv_jewelcrafting_50']			= statsColors.prismaticGem, -- (green icon)
+	['interface\\icons\\inv_jewelcrafting_49']			= statsColors.prismaticGem, -- (yellow icon)
+	['interface\\icons\\inv_jewelcrafting_51']			= statsColors.prismaticGem, -- (orange icon)
+	['interface\\icons\\inv_jewelcrafting_54']			= statsColors.prismaticGem, -- (blue icon)
+	['interface\\icons\\inv_jewelcrafting_53']			= statsColors.prismaticGem, -- (purple icon)
 
 -- Meta
 --  BC
@@ -362,11 +368,11 @@ local gems = {
 	['interface\\icons\\inv_misc_gem_x4_metagem_cut']		= statsColors.metaGem,
 
 -- Cogwheel
-	['interface\\icons\\inv_misc_enggizmos_30']				= statsColors.cogwheel,
+	['interface\\icons\\inv_misc_enggizmos_30']	= statsColors.cogwheel,
 
 -- Hydraulic
 --  Agility
-	['interface\\icons\\inv_legendary_breathofblackprince_int'] = statsColors.hydraulicGem,
+	['interface\\icons\\inv_legendary_breathofblackprince_int']	= statsColors.hydraulicGem,
 --  Strength
 	['interface\\icons\\inv_legendary_breathofblackprince_agi']	= statsColors.hydraulicGem,
 --  Intellect
@@ -381,12 +387,12 @@ end
 
 local function convertMatch(str)
 	str = str:gsub('([%.%(%)%%%+%-%*%?%[%]%^%$])', '%%%1')
-	str = str:gsub('(%%%%s)', '%%%%c+') -- will be replaced below
-	str = str:gsub('(%%%%d)', '%%d+')
-	str = str:gsub('(%%%%%d+d)', '%%d+')
-	str = str:gsub('(%%%%f)', '%%d+%%.?%%d*')
-	str = str:gsub('(%%%%c)', '%[%^%%s%]')
-	str = str:gsub('(%%%%%%%.?%d*f)', '%%d+%%.?%%d*')
+	str = str:gsub('(%%%%s)', '[^%%s]+')
+	str = str:gsub('(%%%%d)', '[%%d,%%.]+')
+	str = str:gsub('(%%%%%d+d)', '[%%d,%%.]+')
+	str = str:gsub('(%%%%f)', '[%%d,%%.]+')
+	str = str:gsub('(%%%%c)', '[%%+%%-]+')
+	str = str:gsub('(%%%%%%%.?%d*f)', '[%%d,%%.]+')
 	return str
 end
 
@@ -463,6 +469,26 @@ function StatStain2_modifyTooltip(tooltip)
 		end
 	end
 
+	for i = 2, #regions do
+		if sobj:GetObjectType() == "Texture" and sobj:IsShown() then
+			local texture = sobj:GetTexture()
+			if texture then
+				local newColor = gems[strlower(texture)]
+				if newColor then
+					local _, parent = sobj:GetPoint()
+					if parent then
+						local text = parent:GetText():match('^|c........(.+)$')
+						if text then
+							parent:SetText(text)
+						end
+						parent:SetTextColor(parseTextColor(newColor))
+						parent.StatStain2Checked = true
+					end
+				end
+			end
+		end
+	end
+
 	for i = 2, #regions do -- skip item name
 		local sobj = regions[i]
 		if sobj and not sobj.StatStain2Checked then
@@ -489,19 +515,6 @@ function StatStain2_modifyTooltip(tooltip)
 					if text ~= newText then
 						sobj:SetText(newText)
 						sobj.StatStain2Checked = true
-					end
-				end
-			elseif sobj:GetObjectType() == "Texture" and sobj:IsShown() then
-				local newColor = gems[strlower(sobj:GetTexture())]
-				if newColor then
-					local _, parent = sobj:GetPoint()
-					if parent then
-						local text = parent:GetText():match('^|c........(.+)$')
-						if text then
-							parent:SetText(text)
-						end
-						parent:SetTextColor(parseTextColor(newColor))
-						parent.StatStain2Checked = true
 					end
 				end
 			end

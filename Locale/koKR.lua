@@ -4,4 +4,4 @@ local L = StatStain2Locale
 
 L['StatStain2: StatStain Rebuilt']	= 'StatStain2: StatStain Rebuilt'
 L[': ']								= ': '
-L['%c%d STAT']						= 'STAT %c%d' -- "민첩성 +10"
+L['%c%s STAT']						= 'STAT %c%s' -- "민첩성 +10"
