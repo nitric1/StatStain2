@@ -1,11 +1,11 @@
-## Interface: 60000
+## Interface: 60100
 ## Title: StatStain2: StatStain Rebuilt
 ## Notes: Customize stat colors in item tooltips.
 ## Notes-koKR: 아이템의 각 능력치 종류별로 색상을 입힙니다.
 ## Notes-zhTW: 自訂裝備屬性顏色
 ## Author: HNO3
 ## SavedVariables: StatStain2DB
-## Version: 0.11.3
+## Version: 0.12.0
 
 Locale\Locale.xml
 StatStain2.xml

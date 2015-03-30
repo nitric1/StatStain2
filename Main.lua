@@ -8,7 +8,7 @@
 
 local L = StatStain2Locale
 local AppName = L['StatStain2: StatStain Rebuilt']
-local Version = '0.11.3'
+local Version = '0.12.0'
 local AppFullName = AppName .. ' ' .. Version
 
 local tooltips = {
