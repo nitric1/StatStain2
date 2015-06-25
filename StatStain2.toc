@@ -5,7 +5,7 @@
 ## Notes-zhTW: 自訂裝備屬性顏色
 ## Author: HNO3
 ## SavedVariables: StatStain2DB
-## Version: 0.12.1
+## Version: 0.13.0
 
 Locale\Locale.xml
 StatStain2.xml
