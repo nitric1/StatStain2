@@ -1,4 +1,4 @@
-## Interface: 60200
+## Interface: 70000
 ## Title: StatStain2: StatStain Rebuilt
 ## Notes: Customize stat colors in item tooltips.
 ## Notes-koKR: 아이템의 각 능력치 종류별로 색상을 입힙니다.
